@@ -45,7 +45,7 @@ public class Main {
             System.out.println("FunctionPointIndexOutOfBoundsException: " + e.getMessage());
         }
         try {
-            f.setPointX(5, 34);
+            f.setPointX(1, 34);
         } catch (FunctionPointIndexOutOfBoundsException e) {
             System.out.println("FunctionPointIndexOutOfBoundsException: " + e.getMessage());
         } catch (InappropriateFunctionPointException e) {
@@ -57,7 +57,7 @@ public class Main {
             System.out.println("FunctionPointIndexOutOfBoundsException: " + e.getMessage());
         }
         try {
-            f.setPointY(6, 15);
+            f.setPointY(20, 15);
         } catch (FunctionPointIndexOutOfBoundsException e) {
             System.out.println("FunctionPointIndexOutOfBoundsException: " + e.getMessage());
         }

@@ -190,13 +190,11 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         if ((index == 0 || index == size - 1)) {
             if (getNodeByIndex(index).point.getX() != point.getX())
                 throw new InappropriateFunctionPointException("x выходит за границы определения функции");
-            deleteNodeByIndex(index);
-            addNodeByIndex(index, new FunctionNode(point));
+            getNodeByIndex(index).point = new FunctionPoint(point);
         }
         else
             if (point.getX() > getNodeByIndex(index).prev.point.getX() && point.getX() < getNodeByIndex(index).next.point.getX()) {
-                deleteNodeByIndex(index);
-                addNodeByIndex(index, new FunctionNode(point));
+                getNodeByIndex(index).point = new FunctionPoint(point);
             }
             else
                 throw new InappropriateFunctionPointException("x выходит за границы определения соседних точек");
