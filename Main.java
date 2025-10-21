@@ -26,7 +26,7 @@ public class Main {
         System.out.println("Точки:");
         f.outClass();
         try {
-            f.getPoint(6);
+            System.out.println(f.getPoint(5).getX());
         } catch (FunctionPointIndexOutOfBoundsException e) {
             System.out.println("FunctionPointIndexOutOfBoundsException: " + e.getMessage());
         }

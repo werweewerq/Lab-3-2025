@@ -52,7 +52,9 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    private FunctionNode getNodeByIndex(int index) {
+    
+
+ /*   private FunctionNode getNodeByIndex(int index) {
         FunctionNode node;
         if (index <= lastindex / 2 || index > (size + lastindex) / 2) {
             node = head;
@@ -73,6 +75,33 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
             else
                 for (int i = lastindex; i != index; ++i)
                     node = node.next;
+        }
+        lastindex = index;
+        lastNode = node;
+        return node;
+    }*/
+
+    private FunctionNode getNodeByIndex(int index) {
+        FunctionNode node;
+        if (Math.abs(index - lastindex) <= Math.min(index, size - 1 - index)) {
+            node = lastNode;
+            if (index > lastindex)
+                for (int i = lastindex; i < index; i++)
+                    node = node.next;
+            else
+                for (int i = lastindex; i > index; i--)
+                    node = node.prev;
+        }
+        else
+            if (index <= size - 1 - index) {
+            node = head;
+            for (int i = 0; i < index; i++)
+                node = node.next;
+            }
+            else {
+            node = head.prev;
+            for (int i = size - 1; i > index; i--)
+                node = node.prev;
         }
         lastindex = index;
         lastNode = node;
@@ -126,9 +155,9 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         head.prev = head;
         ++size;
         leftX += step;
-        for(int i = 1; i != pointsCount; ++i, leftX += step) {
+        for(int i = 1; i != pointsCount; ++i, leftX += step)
             addNodeToTail(new FunctionNode(leftX, 0));
-        }
+        lastNode = head;
     }
 
     public LinkedListTabulatedFunction(double leftX, double rightX, double[] values) {
@@ -143,9 +172,9 @@ public class LinkedListTabulatedFunction implements TabulatedFunction {
         head.prev = head;
         ++size;
         leftX += step;
-        for(int i = 1; i != pointsCount; ++i, leftX += step) {
+        for(int i = 1; i != pointsCount; ++i, leftX += step)
             addNodeToTail(new FunctionNode(leftX, values[i]));
-        }
+        lastNode = head;
     }
 
     public double getLeftDomainBorder() {
